@@ -1,7 +1,66 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
+<h1>Register</h1>
+<p class="text-muted">Create your account</p>
+<form method="POST" action="{{ route('register') }}">
+<div class="input-group mb-3">
+<div class="input-group-prepend"><span class="input-group-text">
+<svg class="c-icon">
+<use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+</svg></span></div>
+<input class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus type="text" placeholder="Username">
+@error('name')
+<span class="invalid-feedback" role="alert">
+    <strong>{{ $message }}</strong>
+</span>
+@enderror
+</div>
+<div class="input-group mb-3">
+<div class="input-group-prepend"><span class="input-group-text">
+<svg class="c-icon">
+<use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
+</svg></span></div>
+<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="email">
+
+@error('email')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+@enderror
+</div>
+<div class="input-group mb-3">
+<div class="input-group-prepend"><span class="input-group-text">
+<svg class="c-icon">
+<use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+</svg></span></div>
+<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="password">
+
+@error('password')
+    <span class="invalid-feedback" role="alert">
+        <strong>{{ $message }}</strong>
+    </span>
+@enderror
+
+</div>
+<div class="input-group mb-4">
+<div class="input-group-prepend"><span class="input-group-text">
+<svg class="c-icon">
+<use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+</svg></span></div>
+<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="confirm password">
+</div>
+
+<button class="btn btn-block btn-success" type="button">Create Account</button>
+</div>
+<div class="card-footer p-4">
+<div class="row">
+<div class="col-6">
+<button class="btn btn-block btn-facebook" type="button"><span>facebook</span></button>
+</div>
+<div class="col-6">
+<button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -73,5 +132,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection
