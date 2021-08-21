@@ -26,7 +26,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware'=>'auth'],function(){
 
-    Route::group(['mdilleware'=>'is_admin','prefix'=>'admin', 'as'=> 'admin.'],function(){
+    Route::group(['middleware'=>'is_admin','prefix'=>'admin', 'as'=> 'admin.'],function(){
            Route::resource('pages',PageController::class);
     });
 });

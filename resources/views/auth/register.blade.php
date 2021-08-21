@@ -4,6 +4,7 @@
 <h1>Register</h1>
 <p class="text-muted">Create your account</p>
 <form method="POST" action="{{ route('register') }}">
+    @csrf
 <div class="input-group mb-3">
 <div class="input-group-prepend"><span class="input-group-text">
 <svg class="c-icon">
@@ -51,15 +52,9 @@
 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="confirm password">
 </div>
 
-<button class="btn btn-block btn-success" type="button">Create Account</button>
+<button class="btn btn-block btn-success">Create Account</button>
 </div>
-<div class="card-footer p-4">
-<div class="row">
-<div class="col-6">
-<button class="btn btn-block btn-facebook" type="button"><span>facebook</span></button>
-</div>
-<div class="col-6">
-<button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>
+</form>
 {{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
