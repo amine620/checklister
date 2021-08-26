@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\admin\CheckListController;
+use App\Http\Controllers\admin\CheckListGroupController;
 use App\Http\Controllers\admin\PageController;
+use App\Models\CheckList;
+use App\Models\CheckListGroup;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,5 +32,8 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::group(['middleware'=>'is_admin','prefix'=>'admin', 'as'=> 'admin.'],function(){
            Route::resource('pages',PageController::class);
+           Route::resource('checklist_groups',CheckListGroupController::class);
+           Route::resource('checklist_groups.checklists',CheckListController::class);
+
     });
 });
