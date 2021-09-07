@@ -57,28 +57,9 @@
                     <div class="card">
                         <div class="card-header"><i class="fa fa-align-justify"></i> {{ __('List of Tasks') }}</div>
                         <div class="card-body">
-                            <table class="table table-responsive-sm">
-                                <tbody>
-                                    @foreach ($checklist->tasks as $task)
-                                        <tr>
-                                            <td>{{ $task->name }}</td>
-                                            <td>
-                                                <a class="btn btn-sm btn-primary" href="{{ route('admin.checklists.tasks.edit', [$checklist, $task]) }}">{{__('Edit')}}</a>
-                                                <form style="display: inline-block"
-                                                    action="{{ route('admin.checklists.tasks.destroy', [$checklist,$task]) }}"
-                                                    class="form-group" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-sm btn-danger"
-                                                        onclick="return confirm('are you sure')">delete
-                                                        </button>
-                                                </form>
-                                            </td>
-
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                            {{-- livewire component --}}
+                            @livewire('tasks-table',["checklist"=>$checklist])
+                           
                             <ul class="pagination">
                                 <li class="page-item"><a class="page-link" href="#">Prev</a></li>
                                 <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -112,7 +93,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="description">{{ __('Description') }}</label>
-                                            <textarea class="form-control" id="name" name="description"
+                                            <textarea class="form-control" id="task-textarea" name="description"
                                                 rows="5">{{ old('description') }}</textarea>
                                         </div>
                                     </div>
@@ -128,3 +109,13 @@
         </div>
     </div>
 @endsection
+ @section('script')
+ <script>
+    ClassicEditor
+        .create( document.querySelector( '#task-textarea' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+
+ @endsection

@@ -10,6 +10,6 @@ class Task extends Model
 {
     use HasFactory,SoftDeletes;
 
-    protected $fillable=['check_list_id','name','description'];
+    protected $fillable=['check_list_id','name','description','position'];
     
 }

@@ -38,7 +38,8 @@ class TaskController extends Controller
      */
     public function store(StoreTaskRequest $request,CheckList $checklist)
     {
-        $checklist->tasks()->create($request->validated());
+        $position=$checklist->tasks()->max('position')+1;
+        $checklist->tasks()->create($request->validated()+['position'=>$position]);
         return redirect()->route('admin.checklist_groups.checklists.edit',[$checklist->check_list_group_id,$checklist]);
     }
 
@@ -86,6 +87,7 @@ class TaskController extends Controller
      */
     public function destroy(CheckList $checklist,Task $task)
     {
+        $checklist->tasks()->where('position','>',$task->position)->update(['position'=>\DB::raw('position-1')]);
         $task->delete();
         // return back();
         return redirect()->route('admin.checklist_groups.checklists.edit',[$checklist->check_list_group_id,$checklist]);
