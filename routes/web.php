@@ -32,7 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware'=>'auth'],function(){
 
     Route::group(['middleware'=>'is_admin','prefix'=>'admin', 'as'=> 'admin.'],function(){
-           Route::resource('pages',PageController::class);
+           Route::resource('pages',PageController::class)->only(['edit','update']);
            Route::resource('checklist_groups',CheckListGroupController::class);
            Route::resource('checklist_groups.checklists',CheckListController::class);
            Route::resource('checklists.tasks',TaskController::class);
