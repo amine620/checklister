@@ -8,11 +8,7 @@
         </svg>
     </div>
     <ul class="c-sidebar-nav">
-        <li class="c-sidebar-nav-item"><a class="c-sidebar-nav-link" href="{{route('home')}}">
-                <svg class="c-sidebar-nav-icon">
-                    <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
-                </svg> {{__('Dashboard')}}<span class="badge badge-info">NEW</span></a></li>
-       @if (auth()->user()->is_admin)
+           @if (auth()->user()->is_admin)
         <li class="c-sidebar-nav-title">{{__('Manage Checklist')}}</li>
         @foreach (\App\Models\CheckListGroup::with('checklists')->get() as $group)
             
