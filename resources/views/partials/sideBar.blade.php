@@ -42,36 +42,21 @@
         </li>
         
 
-        <li class="c-sidebar-nav-title">{{__('Pages')}}</li>
+        <li class="c-sidebar-nav-title">{{__('Manage Data')}}</li>
 
-        @foreach (\App\Models\Page::all() as $page)
+        
         <li class="c-sidebar-nav-item c-sidebar-nav-dropdown"><a
-                class="c-sidebar-nav-link " href="{{route('admin.pages.edit',$page)}}">
+                class="c-sidebar-nav-link " href="{{route('admin.users.index')}}">
                 <svg class="c-sidebar-nav-icon">
                     <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-puzzle"></use>
-                </svg>{{$page->title }}</a>
+                </svg>{{'Users' }}</a>
            
         </li>
-        @endforeach
+       
 
        @endif
 
-        <li class="c-sidebar-nav-title">{{__('Other')}}</li>
-            <li class="c-sidebar-nav-item">
-            <a class="c-sidebar-nav-link" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();"
-            >
-            <svg class="c-sidebar-nav-icon">
-                <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-speedometer"></use>
-            </svg> 
-            {{ __('Logout') }}
-            <span class="badge badge-info"></span>
-          </a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
-        </li>
+       
   
        
     </ul>

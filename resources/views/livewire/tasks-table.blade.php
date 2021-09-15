@@ -1,6 +1,7 @@
 <table class="table table-responsive-sm" wire:sortable="updateTaskOrder">
     <tbody>
         @foreach ($tasks as $task)
+        
             <tr wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}">
                 <td wire:sortable.handle>{{ $task->name }}</td>
                 <td>

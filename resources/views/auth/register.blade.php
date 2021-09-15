@@ -1,61 +1,79 @@
 @extends('layouts.auth')
 
 @section('content')
-<h1>Register</h1>
-<p class="text-muted">Create your account</p>
-<form method="POST" action="{{ route('register') }}">
-    @csrf
-<div class="input-group mb-3">
-<div class="input-group-prepend"><span class="input-group-text">
-<svg class="c-icon">
-<use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
-</svg></span></div>
-<input class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus type="text" placeholder="Username">
-@error('name')
-<span class="invalid-feedback" role="alert">
-    <strong>{{ $message }}</strong>
-</span>
-@enderror
-</div>
-<div class="input-group mb-3">
-<div class="input-group-prepend"><span class="input-group-text">
-<svg class="c-icon">
-<use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
-</svg></span></div>
-<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="email">
+    <h1>Register</h1>
+    <p class="text-muted">Create your account</p>
+    <form method="POST" action="{{ route('register') }}">
+        @csrf
+        <div class="input-group mb-3">
+            <div class="input-group-prepend"><span class="input-group-text">
+                    <svg class="c-icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                    </svg></span></div>
+            <input class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required
+                autocomplete="name" autofocus type="text" placeholder="Username">
+            @error('name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend"><span class="input-group-text">
+                    <svg class="c-icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
+                    </svg></span></div>
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email"
+                value="{{ old('email') }}" required autocomplete="email" placeholder="email">
 
-@error('email')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-@enderror
-</div>
-<div class="input-group mb-3">
-<div class="input-group-prepend"><span class="input-group-text">
-<svg class="c-icon">
-<use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-</svg></span></div>
-<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="password">
+            @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend"><span class="input-group-text">
+                    <svg class="c-icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
+                    </svg></span></div>
+            <input id="website" type="text" class="form-control @error('website') is-invalid @enderror" name="website"
+                value="{{ old('wbesite') }}"  placeholder="wbesite">
 
-@error('password')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-@enderror
+            @error('email')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend"><span class="input-group-text">
+                    <svg class="c-icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                    </svg></span></div>
+            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                name="password" required autocomplete="new-password" placeholder="password">
 
-</div>
-<div class="input-group mb-4">
-<div class="input-group-prepend"><span class="input-group-text">
-<svg class="c-icon">
-<use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
-</svg></span></div>
-<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="confirm password">
-</div>
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
 
-<button class="btn btn-block btn-success">Create Account</button>
-</div>
-</form>
-{{-- <div class="container">
+        </div>
+        <div class="input-group mb-4">
+            <div class="input-group-prepend"><span class="input-group-text">
+                    <svg class="c-icon">
+                        <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-lock-locked"></use>
+                    </svg></span></div>
+            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
+                autocomplete="new-password" placeholder="confirm password">
+        </div>
+
+        <button class="btn btn-block btn-success">Create Account</button>
+        </div>
+    </form>
+    {{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
